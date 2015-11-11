@@ -7,4 +7,8 @@ RSpec.describe Question, type: :model do
   it "is not valid without a title" do
     expect(Question.new().valid?).to eq(false)
   end
+  it "has a unique URL" do
+    Question.create(title: "Unicorn Rainbow?", url: "jhgl")
+    expect(Question.create(title: "Doughnut Rainbow?",url: "jhgl").valid?).to be(false)
+  end
 end
