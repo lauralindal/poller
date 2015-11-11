@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   root 'questions#new'
-  get 'questions/new'
 
-  get 'questions/show'
+  resources :questions, only: [:new, :show, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
