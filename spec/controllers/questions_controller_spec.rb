@@ -13,12 +13,13 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
 
-  # describe "GET #show" do
-  #   it "returns http success" do
-  #     get :show
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET #show" do
+    it "returns http success" do
+      question = create(:question)
+      get :show, id: question.url
+      expect(response).to have_http_status(:success)
+    end
+  end
 
   describe "POST #create" do
     it "saves a question to database" do
@@ -30,5 +31,4 @@ RSpec.describe QuestionsController, type: :controller do
       expect(Question.all.count).to eq(0)
     end
   end
-
 end

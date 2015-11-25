@@ -4,6 +4,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @question = Question.find_by(url: params[:id])
+    puts @question
   end
 
   def create
