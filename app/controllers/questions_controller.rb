@@ -5,14 +5,13 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by(url: params[:id])
-    puts @question
   end
 
   def create
     @question = Question.new(question_params)
     respond_to do |format|
       if @question.save
-        format.html { redirect_to new_question_path, notice: "Poll was created."}
+        format.html { redirect_to question_path(@question.url), notice: "Poll was created."}
       else
         format.html { render :new }
       end
