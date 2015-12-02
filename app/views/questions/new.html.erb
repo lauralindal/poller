@@ -17,6 +17,11 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+  <div class="left field">
+    <%= f.label :description %><br>
+    <%= f.label 'Please seperate your answers by a new line' %><br>
+    <%= text_area_tag 'description' %>
+  </div>
   <div class="actions">
     <%= f.submit "Save Poll" %>
   </div>
