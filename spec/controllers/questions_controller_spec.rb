@@ -14,10 +14,14 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe "GET #show" do
-    it "returns http success" do
+    it "returns http success for known id" do
       question = create(:question)
       get :show, id: question.url
       expect(response).to have_http_status(:success)
+    end
+    it "returns http redirect if record does not exist" do
+      get :show, id: 'schnulli'
+      expect(response).to have_http_status(:redirect)
     end
   end
 

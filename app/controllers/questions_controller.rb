@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by(url: params[:id])
+    redirect_to new_question_path unless @question
   end
 
   def create
