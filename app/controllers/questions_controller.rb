@@ -10,6 +10,11 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    answers = params[:description].split
+    answers.each do | answer |
+      a = Answer.new(description: answer)
+      @question.answers << a
+    end
     respond_to do |format|
       if @question.save
         format.html { redirect_to question_path(@question.url), notice: "Poll was created."}
