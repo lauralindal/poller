@@ -4,6 +4,8 @@ class AnswersController < ApplicationController
 
   def update
     @answer.update_attribute(:count, @answer.count + 1)
+    redirect_to question_path(@answer.question.url),
+      notice: "Thank you for your opinion!"
   end
 
   private

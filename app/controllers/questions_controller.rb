@@ -17,7 +17,8 @@ class QuestionsController < ApplicationController
     end
     respond_to do |format|
       if @question.save
-        format.html { redirect_to question_path(@question.url), notice: "Poll was created."}
+        format.html { redirect_to question_path(@question.url),
+          notice: "Poll was created."}
       else
         format.html { render :new }
       end

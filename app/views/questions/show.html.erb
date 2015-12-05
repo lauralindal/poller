@@ -4,6 +4,7 @@
 
 <ul>
   <% @question.answers.each do | answer | %>
-    <li><%= link_to answer.description, answer_path(answer.id) %></li><br>
+    <li><%= link_to answer.description,
+      answer_path(answer.id), method: :patch %></li><br>
   <% end %>
 </ul>
