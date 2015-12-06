@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
   before_create :generate_url, unless: :url?
   validates :title, presence: true
   validates :url, uniqueness: true
+  validates :answers, presence: true
 
   def has_more_than_five_answers?
     answers.map(&:count).sum >= 5
