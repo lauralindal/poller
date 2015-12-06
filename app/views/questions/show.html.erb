@@ -3,7 +3,7 @@
 <h2><%= @question.title %></h2>
 
 <ul>
-  <% if @cookie %>
+  <% if @cookies %>
     <% @question.answers.each do | answer | %>
       <li><%= answer.description + answer.count.to_s %></li><br>
     <% end %>
