@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
   validates :url, uniqueness: true
 
   def has_more_than_five_answers?
-    answers.sum(:count) >= 5
+    answers.map(&:count).sum >= 5
   end
 
   private

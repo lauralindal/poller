@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find_by(url: params[:id])
+    @question = Question.includes(:answers).find_by(url: params[:id])
     @cookies = cookies[@question.url]
     redirect_to new_question_path unless @question
   end
