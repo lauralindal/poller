@@ -4,6 +4,10 @@ class Question < ActiveRecord::Base
   validates :title, presence: true
   validates :url, uniqueness: true
 
+  def has_more_than_five_answers?
+    answers.sum(:count) >= 5
+  end
+
   private
 
     def generate_url

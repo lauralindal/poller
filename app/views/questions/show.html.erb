@@ -6,8 +6,12 @@
 
 <ul>
   <% if @cookies %>
-    <% @question.answers.each do | answer | %>
-      <li><%= answer.description + answer.count.to_s %></li><br>
+    <% if @question.has_more_than_five_answers? %>
+      <% @question.answers.each do | answer | %>
+        <li><%= answer.description + answer.count.to_s %></li><br>
+      <% end %>
+    <% else %>
+      <p>nothing to see yet</p>
     <% end %>
   <% else %>
     <% @question.answers.each do | answer | %>
