@@ -4,7 +4,7 @@
 
 <h2><%= @question.title %></h2>
 
-<ul>
+<ul id="answers">
   <% if @cookies %>
     <% if @question.has_more_than_five_answers? %>
       <% @question.answers.each do | answer | %>
@@ -22,3 +22,26 @@
 </ul>
 </div>
 </section>
+
+<div class="ct-chart ct-perfect-fourth">
+</div>
+
+<script type="text/javascript">
+var labels = [];
+$('#answers').find('li').each(function(li) {
+  labels.push($(this).text());
+});
+var data = {
+  // A labels array that can contain any sort of values
+  labels: labels,
+  // Our series array that contains series objects or in this case series data arrays
+  series: [
+    [5, 2, 4, 2, 0]
+  ]
+};
+
+// Create a new line chart object where as first parameter we pass in a selector
+// that is resolving to our chart container element. The Second parameter
+// is the actual data object.
+new Chartist.Line('.ct-chart', data);
+</script>
