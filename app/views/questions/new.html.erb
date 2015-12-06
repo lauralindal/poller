@@ -1,4 +1,8 @@
-<h1>Create a New Poll</h1>
+
+
+<section class="row">
+    <div class="container">
+      <h1>Create a New Poll</h1>
 
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
@@ -13,6 +17,7 @@
     </div>
   <% end %>
 
+
   <div class="left field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -25,5 +30,7 @@
   <div class="actions">
     <%= f.submit "Save Poll" %>
   </div>
+  </div>
+</section>
 
 <% end %>
