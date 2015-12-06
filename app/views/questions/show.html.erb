@@ -8,7 +8,14 @@
   <% if @cookies %>
     <% if @question.has_more_than_five_answers? %>
       <% @question.answers.each do | answer | %>
-        <li><%= answer.description + answer.count.to_s %></li><br>
+        <li>
+          <span id="answer">
+            <%= answer.description %>
+          </span>
+          <span id="count">
+            <%= answer.count.to_s %>
+          </span>
+        </li>
       <% end %>
     <% else %>
       <p>nothing to see yet</p>
@@ -23,25 +30,37 @@
 </div>
 </section>
 
-<div class="ct-chart ct-perfect-fourth">
-</div>
+<div class="ct-chart ct-bar">
+
 
 <script type="text/javascript">
-var labels = [];
-$('#answers').find('li').each(function(li) {
-  labels.push($(this).text());
-});
-var data = {
-  // A labels array that can contain any sort of values
-  labels: labels,
-  // Our series array that contains series objects or in this case series data arrays
-  series: [
-    [5, 2, 4, 2, 0]
-  ]
-};
+$(document).ready(function() {
+  var labels = [];
+  var series = [];
+  $('#answers').find('span#answer').each(function(_index, element) {
+    labels.push($(element).text());
+  });
+  $('#answers').find('span#count').each(function(_index, element) {
+    series.push($(element).text());
+  });
 
-// Create a new line chart object where as first parameter we pass in a selector
-// that is resolving to our chart container element. The Second parameter
-// is the actual data object.
-new Chartist.Line('.ct-chart', data);
+  var data = {
+    labels: labels,
+    series: [series]
+  };
+  var options = {
+        horizontalBars: true,
+        axisX: {
+         onlyInteger: true
+        }
+      };
+  // Create a new line chart object where as first parameter we pass in a selector
+  // that is resolving to our chart container element. The Second parameter
+  // is the actual data object.
+  new Chartist.Bar('.ct-chart', data, options);
+});
+
+
+
 </script>
+</div>

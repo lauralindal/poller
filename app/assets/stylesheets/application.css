@@ -14,3 +14,13 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Use this selector to override bar styles on bar charts. Bars are also strokes so you have maximum freedom in styling them. */
+ .ct-series-a .ct-bar {
+   /* Colour of your bars */
+   stroke: grey;
+   /* The width of your bars */
+   stroke-width: 20px;
+   /* Maybe you like round corners on your bars? */
+   stroke-linecap: round;
+ }
