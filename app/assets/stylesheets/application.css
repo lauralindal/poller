@@ -21,6 +21,4 @@
    stroke: grey;
    /* The width of your bars */
    stroke-width: 20px;
-   /* Maybe you like round corners on your bars? */
-   stroke-linecap: round;
  }
