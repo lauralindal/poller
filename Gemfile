@@ -43,4 +43,7 @@ gem 'pg'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
+  gem 'rails_12factor'
 end
+
+ruby "2.0.0"
