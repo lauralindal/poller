@@ -10,10 +10,11 @@ class Question < ActiveRecord::Base
   end
 
   def to_csv
-    CSV.generate_line [ self.title ]
-    self.answers.each do | answer |
-      CSV.generate_line [ answer.description ]
-      CSV.generate_line [ answer.count ]
+    CSV.generate do |csv|
+      csv << ["Answer", "Count"]
+      answers.each do |answer|
+        csv << [answer.description, answer.count]
+      end
     end
   end
 
