@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    answers = params[:description].split
+    answers = params[:description].split("\n")
     answers.each do | answer |
       a = Answer.new(description: answer)
       @question.answers << a
