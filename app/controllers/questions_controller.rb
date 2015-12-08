@@ -6,7 +6,10 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.includes(:answers).find_by(url: params[:id])
     @cookies = cookies[@question.url]
-    redirect_to new_question_path unless @question
+    respond_to do |format|
+      format.html { redirect_to new_question_path unless @question }
+      format.csv { send_data @question.to_csv }
+    end
   end
 
   def create

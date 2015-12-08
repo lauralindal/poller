@@ -9,6 +9,14 @@ class Question < ActiveRecord::Base
     answers.map(&:count).sum >= 5
   end
 
+  def to_csv
+    CSV.generate_line [ self.title ]
+    self.answers.each do | answer |
+      CSV.generate_line [ answer.description ]
+      CSV.generate_line [ answer.count ]
+    end
+  end
+
   private
 
     def generate_url
