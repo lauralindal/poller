@@ -1,67 +1,30 @@
 <section class="row">
-    <div class="container">
-<p><%= notice %></p>
+  <div class="container">
+    <p><%= notice %></p>
 
-<h2><%= @question.title %></h2>
+    <h2><%= @question.title %></h2>
 
-<ul id="answers">
-  <% if @cookies %>
-    <% if @question.has_more_than_five_answers? %>
-      <% @question.answers.each do | answer | %>
-        <li>
-          <span id="answer">
-            <%= answer.description %>
-          </span>
-          <span id="count">
-            <%= answer.count.to_s %>
-          </span>
-        </li>
+    <dl id="answers">
+      <% if @cookies %>
+        <% if @question.has_more_than_five_answers? %>
+          <% @question.answers.each do | answer | %>
+            <dd>
+              <span id="answer"><%= answer.description + ": " %></span>
+              <span id="count"><%= answer.count.to_s %></span>
+            </dd>
+          <% end %>
+          <div class="ct-chart ct-bar">
+          </div>
+          <%= link_to "Export Data", question_path(format: "csv") %>
+        <% else %>
+          <p>There are not enough answers to show you a result yet.</p>
+        <% end %>
+      <% else %>
+        <% @question.answers.each do | answer | %>
+          <dd><%= link_to answer.description, answer_path(answer.id),
+           method: :patch %></dd><br>
+        <% end %>
       <% end %>
-    <% else %>
-      <p>nothing to see yet</p>
-    <% end %>
-  <% else %>
-    <% @question.answers.each do | answer | %>
-      <li><%= link_to answer.description,
-        answer_path(answer.id), method: :patch %></li><br>
-    <% end %>
-  <% end %>
-</ul>
-<%= link_to "Export Data", question_path(format: "csv") %>
-</div>
+    </dl>
+  </div>
 </section>
-
-<div class="ct-chart ct-bar">
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-  var labels = [];
-  var series = [];
-  $('#answers').find('span#answer').each(function(_index, element) {
-    labels.push($(element).text());
-  });
-  $('#answers').find('span#count').each(function(_index, element) {
-    series.push($(element).text());
-  });
-
-  var data = {
-    labels: labels,
-    series: [series]
-  };
-  var options = {
-        horizontalBars: true,
-        axisX: {
-         onlyInteger: true
-        }
-      };
-  // Create a new line chart object where as first parameter we pass in a selector
-  // that is resolving to our chart container element. The Second parameter
-  // is the actual data object.
-  new Chartist.Bar('.ct-chart', data, options);
-});
-
-
-
-</script>
-</div>
