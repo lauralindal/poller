@@ -9,7 +9,7 @@ RSpec.describe Question, type: :model do
   end
   skip it "has a unique URL" do
     create(:question, url: "jhgl")
-    expect(Question.create(title: "Doughnut Rainbow?",url: "jhgl").valid?).to be(false)
+    expect(Question.create(title: "Doughnut Rainbow?", url: "jhgl").valid?).to be(false)
   end
   skip it "is initialized with a url" do
     question = create(:question)
