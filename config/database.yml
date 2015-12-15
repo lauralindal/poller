@@ -24,3 +24,7 @@ default: &default
 development:
   <<: *default
   database: laurall
+
+test:
+  <<: *default
+  database: laurall

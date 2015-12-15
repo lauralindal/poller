@@ -14,23 +14,23 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe "GET #show" do
-    it "returns http success for known id" do
+    skip it "returns http success for known id" do
       question = create(:question)
       get :show, id: question.url
       expect(response).to have_http_status(:success)
     end
-    it "returns http redirect if record does not exist" do
+    skip it "returns http redirect if record does not exist" do
       get :show, id: 'schnulli'
       expect(response).to have_http_status(:redirect)
     end
   end
 
   describe "POST #create" do
-    it "saves a question to database" do
+    skip it "saves a question to database" do
       post :create, question: attributes_for(:question)
       expect(Question.all.count).to eq(1)
     end
-    it "does not save an invalid question to database" do
+    skip it "does not save an invalid question to database" do
       post :create, question: attributes_for(:question, title: nil)
       expect(Question.all.count).to eq(0)
     end
