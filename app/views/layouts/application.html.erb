@@ -19,13 +19,14 @@
 
 <body>
   <header class="primary-header container group">
-      <h1 class="logo"><%= link_to 'Poller', new_question_path %></h1>
-      <nav class="nav primary-nav">
-      </nav>
-    </header>
-
-  <%= yield %>
-
+    <h1 class="logo"><%= link_to 'Poller', new_question_path %></h1>
+    <nav class="nav primary-nav">
+    </nav>
+  </header>
+  <div class="container">
+    <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+  </div>
 </body>
 
 </html>
