@@ -5,7 +5,6 @@ FactoryGirl.define do
     email "cheap@whiskey.com"
   end
 
-
   factory :question do
     title "Have you seen my pancake stack?"
   end
