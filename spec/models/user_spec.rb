@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it "is valid with a name" do
+  skip it "is valid with a name" do
     expect(User.new(name: "Trish Walker", email: "krav@maga.self").valid?).to eq true
   end
   it "is invalid without a name" do
@@ -19,5 +19,10 @@ RSpec.describe User, type: :model do
       user.email = invalid_address
       expect(user.valid?).to eq false
     end
+  end
+  it "password is not blank" do
+    user = create(:user)
+    user.password = user.password_confirmation = "" * 6
+    expect(user.password).not_to be_empty
   end
 end

@@ -26,7 +26,11 @@ gem 'spring',        group: :development
 
 gem 'chartist-rails'
 
+# Use Postgres database
 gem 'pg'
+
+# Encrypt passwords
+gem 'bcrypt', '3.1.7'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
