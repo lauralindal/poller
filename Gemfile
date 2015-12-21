@@ -33,4 +33,7 @@ group :development, :test do
   gem 'byebug',      '3.4.0'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor', '0.0.2'
+  gem 'puma',           '2.11.1'
+end
