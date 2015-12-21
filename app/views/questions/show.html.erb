@@ -1,30 +1,36 @@
-<section class="row">
-  <div class="container">
-    <p><%= notice %></p>
+<% provide(:title, @question.title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="question_info">
+      <div class="container">
+        <h1><%= @question.title %></h1>
+        <dl id="answers">
+          <% if @cookies %>
 
-    <h2><%= @question.title %></h2>
+            <% if @question.has_more_than_five_answers? %>
+              <% @question.answers.each do | answer | %>
+                <dd>
+                  <span id="answer"><%= answer.description + ": " %></span>
+                  <span id="count"><%= answer.count.to_s %></span>
+                </dd>
+              <% end %>
+              <div class="ct-chart ct-bar">
+              </div>
+              <%= link_to "Export Data", question_path(format: "csv") %>
+            <% else %>
+              <p>There are not enough answers to show you a result yet.</p>
+            <% end %>
 
-    <dl id="answers">
-      <% if @cookies %>
-        <% if @question.has_more_than_five_answers? %>
-          <% @question.answers.each do | answer | %>
-            <dd>
-              <span id="answer"><%= answer.description + ": " %></span>
-              <span id="count"><%= answer.count.to_s %></span>
-            </dd>
+          <% else %>
+            <% @question.answers.each do | answer | %>
+              <dd>
+                <%= link_to answer.description, answer_path(answer.id), method: :patch %>
+              </dd>
+              <br>
+            <% end %>
           <% end %>
-          <div class="ct-chart ct-bar">
-          </div>
-          <%= link_to "Export Data", question_path(format: "csv") %>
-        <% else %>
-          <p>There are not enough answers to show you a result yet.</p>
-        <% end %>
-      <% else %>
-        <% @question.answers.each do | answer | %>
-          <dd><%= link_to answer.description, answer_path(answer.id),
-           method: :patch %></dd><br>
-        <% end %>
-      <% end %>
-    </dl>
-  </div>
-</section>
+        </dl>
+      </div>
+    </section>
+  </aside>
+</div>
