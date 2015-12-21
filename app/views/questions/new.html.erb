@@ -1,36 +1,19 @@
+<% provide(:title, 'New Question') %>
+<h2>Create a New Poll</h2>
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@question) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-<section class="row">
-    <div class="container">
-      <h1>Create a New Poll</h1>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
 
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      <%= f.label :description %>
+      <%= f.label '(Please seperate your answers by a new line)' %>
+      <%= text_area_tag 'description' %>
 
-      <ul>
-      <% @question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <div class="left field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+      <%= f.submit "Save Poll", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <div class="left field">
-    <%= f.label :description %><br>
-    <%= f.label 'Please seperate your answers by a new line' %><br>
-    <%= text_area_tag 'description' %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Save Poll" %>
-  </div>
-  </div>
-</section>
-
-<% end %>
+</div>
