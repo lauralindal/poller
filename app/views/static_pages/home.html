@@ -1,0 +1,16 @@
+<div class="cover-image">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="text-inverse">Welcome to Poller!</h1>
+        <p class="text-inverse">Time to find compromises.</p>
+        <br>
+        <% if logged_in? %>
+          <%= link_to "Create Poll", new_question_path, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Log in", login_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

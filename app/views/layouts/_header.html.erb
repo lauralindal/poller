@@ -1,11 +1,10 @@
 <header class="primary-header navbar navbar-fixed-top">
   <div class="container">
-    <%= link_to 'Poller', new_question_path, id: "logo" %>
+    <%= link_to "Poller", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%= link_to "Help",   '#' %></li>
         <% if logged_in? %>
+          <li><%= link_to "Create Poll", new_question_path %></li>
           <li><%= link_to "Users", '#' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -21,7 +20,7 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Sign Up", signup_path %></li>
         <% end %>
       </ul>
     </nav>

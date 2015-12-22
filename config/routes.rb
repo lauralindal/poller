@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'questions#new'
+  root 'static_pages#home'
 
   resources :questions, only: [:new, :show, :create]
   resources :answers, only: [:update]
