@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :questions, only: [:new, :show, :create]
+  resources :questions, only: [:new, :show, :create, :destroy]
   resources :answers, only: [:update]
 
   get 'signup' => 'users#new'

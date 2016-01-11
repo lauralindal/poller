@@ -29,6 +29,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    Question.find(params[:id]).destroy
+    flash[:success] = "Question deleted"
+    redirect_to current_user
+  end
+
   private
 
     def question_params
