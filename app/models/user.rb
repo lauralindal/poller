@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :questions, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
   # Activates an account
   def activate
     update_attribute(:activated, true)
-    update_attribute(:activate_at, Time.zone.now)
+    update_attribute(:activated_at, Time.zone.now)
   end
 
   # Sends activation emails

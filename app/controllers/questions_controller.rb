@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
+    @question = current_user.questions.build(question_params)
     answers = params[:description].split("\n")
     answers.each do | answer |
       a = Answer.new(description: answer)
