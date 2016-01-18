@@ -29,6 +29,10 @@ gem 'chartist-rails'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 
+# Images and Image Upload
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
